@@ -21,6 +21,10 @@ contract NFTWithSale is ERC721 {
         _merkleRoot = merkleRoot;
     }
 
+    function setMerkleRoot(bytes32 merkleRoot) public {
+        _merkleRoot = merkleRoot;
+    }
+
     function mint(
         bytes32[] memory proof,
         address to,
