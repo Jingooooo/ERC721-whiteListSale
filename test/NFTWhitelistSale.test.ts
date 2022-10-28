@@ -10,7 +10,9 @@ describe("NFT sale with merkle proof whitelist", () => {
     const whitelist = [user1.address, user2.address];
 
     const leaves = whitelist.map((x) => ethers.utils.keccak256(x));
-    const tree = new MerkleTree(leaves, ethers.utils.keccak256);
+    const tree = new MerkleTree(leaves, ethers.utils.keccak256, {
+      sortPairs: true,
+    });
     const merkleRoot = tree.getRoot();
 
     const Token = await ethers.getContractFactory("NFTWithSale");
